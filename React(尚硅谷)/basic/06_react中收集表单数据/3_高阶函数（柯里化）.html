@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高阶函数（柯里化）</title>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+</body>
+
+<!-- 引入react核心库 -->
+<script src="../js/react.development.js"></script>
+<!-- 引入react-dom，用于支持react操作DOM -->
+<script src="../js/react-dom.development.js"></script>
+<!-- 引入babel，用于将jsx转为js -->
+<script src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+    class Login extends React.Component {
+        // 数据初始化
+        state = {
+            username: '',
+            password: ''
+        }
+
+        saveFormData = (dataType) => {
+            return (e) => {
+                this.setState({ [dataType]: e.target.value })
+            }
+        }
+        handleSubmit = (e) => {
+            e.preventDefault()  // 阻止表单提交
+            const { username, password } = this.state
+            alert(`您输入的用户名是${username}，密码是${password}`)
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    用户名：<input onChange={this.saveFormData('username')} type="text" name='username' />
+                    密码：<input onChange={this.saveFormData('password')} type="password" name='password' />
+                    <button>提交</button>
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(<Login />, document.getElementById('test'))
+</script>
+
+</html>
