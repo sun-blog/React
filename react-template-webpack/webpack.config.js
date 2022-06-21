@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 let MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css单独分离文件加载
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -96,6 +98,8 @@ module.exports = {
             filename: '[name].css', //抽离css之后输出的文件名
             chunkFilename: '[id].css',
         }),
+        new CleanWebpackPlugin(),
+        new friendlyErrorsWebpackPlugin(),
     ],
     resolve: {
         //省略后缀名
