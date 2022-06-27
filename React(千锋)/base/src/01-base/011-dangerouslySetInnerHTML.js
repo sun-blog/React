@@ -29,9 +29,15 @@ export default class App extends Component {
                 <ul>
                     {this.state.list.map((item, index) => (
                         <li key={item.id}>
-                            {item.title}
+                            {/* {item.title} */}
                             {/* 方式一：通过bind传递参数 */}
                             {/* <button onClick={this.delInfo.bind(this,index)}>删除</button> */}
+
+                            <span
+                                dangerouslySetInnerHTML={{
+                                    __html: item.title,
+                                }}
+                            ></span>
 
                             {/* 方式二：通过匿名箭头函数的形式传参；常用方式 */}
                             <button onClick={() => this.delInfo(index)}>删除</button>
