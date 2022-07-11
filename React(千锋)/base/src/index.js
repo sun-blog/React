@@ -3,7 +3,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './01-base/010-todoList';
+import App from './01-base/012-setState';
 
 ReactDOM.render(
     // 开启严格模式
